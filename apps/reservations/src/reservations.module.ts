@@ -6,7 +6,7 @@ import {
   DatabaseModule,
   LoggerModule,
   AUTH_SERVICE,
-  PAYMENT_SERVICE,
+  PAYMENTS_SERVICE,
 } from '@app/common';
 import { ReservationsRepository } from './reservations.repository';
 import {
@@ -29,8 +29,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         MONGODB_URI: Joi.string().required(),
         PORT: Joi.number().required(),
         AUTH_HOST: Joi.string().required(),
-        AUTH_PORT: Joi.number().required(),
         PAYMENTS_HOST: Joi.string().required(),
+        AUTH_PORT: Joi.number().required(),
         PAYMENTS_PORT: Joi.number().required(),
       }),
     }),
@@ -47,7 +47,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         inject: [ConfigService],
       },
       {
-        name: PAYMENT_SERVICE,
+        name: PAYMENTS_SERVICE,
         useFactory: (configService: ConfigService) => ({
           transport: Transport.TCP,
           options: {
