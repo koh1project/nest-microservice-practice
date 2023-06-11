@@ -1,6 +1,6 @@
 steps:
   # Reservations
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
@@ -10,12 +10,12 @@ steps:
         "apps/reservations/Dockerfile",
         ".",
       ]
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       ["push", "us-east4-docker.pkg.dev/sleep-389423/reservations/production"]
 
   # Auth
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
@@ -25,11 +25,11 @@ steps:
         "apps/auth/Dockerfile",
         ".",
       ]
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args: ["push", "us-east4-docker.pkg.dev/sleep-389423/auth/production"]
 
   # Payments
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
@@ -39,11 +39,11 @@ steps:
         "apps/payments/Dockerfile",
         ".",
       ]
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args: ["push", "us-east4-docker.pkg.dev/sleep-389423/payments/production"]
 
   # Notifications
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
@@ -53,6 +53,6 @@ steps:
         "apps/notifications/Dockerfile",
         ".",
       ]
-  - name: "gcr.id/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders/docker"
     args:
       ["push", "us-east4-docker.pkg.dev/sleep-389423/notifications/production"]
