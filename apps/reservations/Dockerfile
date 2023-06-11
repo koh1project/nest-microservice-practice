@@ -4,14 +4,20 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY package-lock.json ./
+COPY tsconfig.json tsconfig.json
+COPY nest-cli.json nest-cli.json
+
 
 RUN npm install
 
-COPY . .
+COPY apps/reservations apps/reservations
+COPY libs libs
 
-RUN npm run build
 
-FROM node:alpine As production
+RUN npm run build reservations
+
+
+FROM node:alpine as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
@@ -23,6 +29,6 @@ COPY package-lock.json ./
 
 RUN npm install
 
-COPY --from=development /usr/src/app/dist ./dist/
+COPY --from=development /usr/src/app/dist ./dist
 
 CMD ["node", "dist/apps/reservations/main"]
