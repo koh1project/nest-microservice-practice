@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "stripe": "^12.9.0"
+
   }
 }
